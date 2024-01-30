@@ -1,15 +1,11 @@
-// main.go 는 컴파일을 하기 위한 파일이다.
+package vars
 
-package main
-
-import (
-	"fmt"
-)
+import "fmt"
 
 func repeatMe(words ...string) {
 	fmt.Println(words)
 }
 
-func main() {
+func ShowRepeat() {
 	repeatMe("chocho", "shin", "kim", "park")
 }
