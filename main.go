@@ -1,5 +1,10 @@
 package main
 
-func main() {
+import "fmt"
 
+func main() {
+	a := 2
+	b := a
+	fmt.Println(a, b)
+	a = 10
 }
