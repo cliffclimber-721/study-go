@@ -5,12 +5,12 @@ type Account struct {
 	Balance int
 }
 
-type anoAccount struct {
-	owner string
-	bal   int
+type AnoAccount struct {
+	own  string
+	bals int
 }
 
-func NewAccount(owner string) *anoAccount {
-	accs := &anoAccount{owner: owner, bal: 0}
+func NewAccount(owner string) *AnoAccount {
+	accs := AnoAccount{own: owner, bals: 0}
 	return &accs
 }
