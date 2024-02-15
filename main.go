@@ -2,15 +2,19 @@ package main
 
 import (
 	"fmt"
+	"log"
 
 	"github.com/cliffclimber-721/study-go/banking"
 )
 
 func main() {
-	accountCho := banking.Account{Owner: "chocho", Balance: 1000}
-	accountShin := banking.Account{Owner: "shin"}
-	acc := banking.NewAccount("kangs")
-	fmt.Println(accountCho)
-	fmt.Println(accountShin)
-	fmt.Println(acc)
+	acc := banking.NewAccount("chocho")
+	acc.Deposit(10)
+	fmt.Println(acc.Balances())
+	// error handling
+	err := acc.Withdraw(2000)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	fmt.Println(acc.Balances())
 }
