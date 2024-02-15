@@ -5,6 +5,14 @@ import (
 	"fmt"
 )
 
+// 이런식으로 main.go 파일에서 에러를 따로 빼서 선언할 수 있는데
+// if err != nil {
+//		log.Fatalln(err)
+//	}
+// 따로 여기서 변수를 선언해서 에러를 표시할 수 있다.
+// 앞에 무조건 err 붙여줘야 얘가 에러라는 걸 인식한다.
+var errNoMoney = errors.New("NOOO MONEY!!")
+
 type Account struct {
 	Owner   string
 	Balance int
@@ -40,7 +48,7 @@ func (a *AnoAccount) Balances() int {
 
 func (a *AnoAccount) Withdraw(amount int) error {
 	if a.bals < amount {
-		return errors.New("NO MONEY!")
+		return errNoMoney
 	}
 	a.bals -= amount
 	// nil은 None null이랑 같은 뜻이다.
@@ -51,11 +59,25 @@ func (a *AnoAccount) Withdraw(amount int) error {
 // 0 이하가 되면 오류가 뜨도록 error handling을 해줘야한다.
 // Go 언어에선 Python 처럼 try-except문이 없기 때문에 if-else로 조건을 걸어준다.
 
-//func forMain() {
+//func forNewAccountMain() {
 //	accountCho := banking.Account{Owner: "chocho", Balance: 1000}
 //	accountShin := banking.Account{Owner: "shin"}
 //	acc := banking.NewAccount("kangs")
 //	fmt.Println(accountCho)
 //	fmt.Println(accountShin)
 //	fmt.Println(acc)
+//}
+
+// 밑에 main 함수 사용할거면 import log 해야한다!!
+
+//func WithdrawAndDepositmain() {
+//	acc := banking.NewAccount("chocho")
+//	acc.Deposit(10)
+//	fmt.Println(acc.Balances())
+// error handling
+//	err := acc.Withdraw(2000)
+//	if err != nil {
+//		log.Fatalln(err)
+//	}
+//	fmt.Println(acc.Balances())
 //}
