@@ -55,6 +55,18 @@ func (a *AnoAccount) Withdraw(amount int) error {
 	return nil
 }
 
+func (a *AnoAccount) ChangeOwner(newOwner string) {
+	a.own = newOwner
+}
+
+func (a AnoAccount) Owners() string {
+	return a.own
+}
+
+func (a AnoAccount) String() string {
+	return fmt.Sprint(a.Owners(), "'s Account.\n Has: ", a.bals)
+}
+
 // 흔히 우리가 아는 은행 계좌에는 마이너스 통장이 아니라면 0에서 끝내야하는 게 맞다.
 // 0 이하가 되면 오류가 뜨도록 error handling을 해줘야한다.
 // Go 언어에선 Python 처럼 try-except문이 없기 때문에 if-else로 조건을 걸어준다.
