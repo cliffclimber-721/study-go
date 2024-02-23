@@ -3,11 +3,15 @@ package main
 import (
 	"fmt"
 
-	"github.com/cliffclimber-721/study-go/banking"
+	mydict "github.com/cliffclimber-721/study-go/dicts"
 )
 
 func main() {
-	acc := banking.NewAccount("chocho")
-	acc.Deposit(10)
-	fmt.Println(acc)
+	dictionary := mydict.Dictionary{"1": "first word"}
+	defs, err := dictionary.Search("blockchain")
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Println(defs)
+	}
 }
